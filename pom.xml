@@ -7,13 +7,20 @@
     <name>GeoTIFF NetCDF-Java IOSP</name>
     
     <repositories>
+        <!-- for NetCDF -->
         <repository>
             <id>unidata-releases</id>
             <url>http://artifacts.unidata.ucar.edu/content/repositories/unidata-releases</url>
         </repository>
+        <!-- for ImageIO-EXT -->
         <repository>
             <id>geosolutions</id>
             <url>http://maven.geo-solutions.it</url>
+        </repository>
+        <!-- for JAI and JAI ImageIO (latter is superceded by ImageIO-Ext) -->
+        <repository>
+            <id>opengeo</id>
+            <url>http://download.osgeo.org/webdav/geotools</url>
         </repository>
     </repositories>
     <dependencies>

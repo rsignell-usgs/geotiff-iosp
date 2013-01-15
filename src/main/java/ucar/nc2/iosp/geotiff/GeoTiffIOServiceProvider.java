@@ -54,6 +54,10 @@ public class GeoTiffIOServiceProvider extends AbstractIOServiceProvider {
     static {
         ImageIO.scanForPlugins();
     }
+    
+    public GeoTiffIOServiceProvider() {
+        super();
+    }
 
     @Override
     public boolean isValidFile(RandomAccessFile raf) throws IOException {

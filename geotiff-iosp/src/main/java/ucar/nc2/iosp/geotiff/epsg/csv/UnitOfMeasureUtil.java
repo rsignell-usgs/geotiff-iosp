@@ -1,5 +1,7 @@
 package ucar.nc2.iosp.geotiff.epsg.csv;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.HashMap;
 import java.util.Map;
 import javax.measure.converter.UnitConverter;
@@ -51,7 +53,7 @@ public class UnitOfMeasureUtil {
     private static Unit<?> convertByCode(int code) {
         switch (code) {
             case 9001:
-                return SI.METER;
+                return SI.METRE;
             case 9101:
                 return SI.RADIAN;
             case 9102:
@@ -91,14 +93,42 @@ public class UnitOfMeasureUtil {
             return (((deg * 100 + min) * 100 + sec) + value) / divisor;
         }
 
+        @Override
+        public BigDecimal convert(BigDecimal bd, MathContext mc) throws ArithmeticException {
+            return BigDecimal.valueOf(convert(bd.doubleValue()));
+        }
+
         public final double derivative(double x) {
             return 1;
         }
 
-        @Override
+        //@Override
         public boolean isLinear() {
             return true;
         }
+
+        @Override
+        public int hashCode() {
+            int hash = 3;
+            hash = 59 * hash + this.divisor;
+            return hash;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final FromSexagesimalConverter other = (FromSexagesimalConverter) obj;
+            if (this.divisor != other.divisor) {
+                return false;
+            }
+            return true;
+        }
+        
     }
 
     private static final class ToSexagesimalConverter extends UnitConverter {
@@ -153,6 +183,11 @@ public class UnitOfMeasureUtil {
         }
 
         @Override
+        public BigDecimal convert(BigDecimal bd, MathContext mc) throws ArithmeticException {
+            return BigDecimal.valueOf(convert(bd.doubleValue()));
+        }
+
+        @Override
         public synchronized UnitConverter inverse() {
             if (inverse == null) {
                 inverse = new FromSexagesimalConverter(multiplier);
@@ -160,10 +195,34 @@ public class UnitOfMeasureUtil {
             return inverse;
         }
 
-        @Override
+        //@Override
         public boolean isLinear() {
             return true;
         }
+
+        @Override
+        public int hashCode() {
+            int hash = 7;
+            hash = 41 * hash + this.multiplier;
+            return hash;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final ToSexagesimalConverter other = (ToSexagesimalConverter) obj;
+            if (this.multiplier != other.multiplier) {
+                return false;
+            }
+            return true;
+        }
+
+        
     }
 
 }

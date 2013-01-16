@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>gov.usgs.cida.netcdf.iosp</groupId>
+		<artifactId>geotiff-iosp-parent</artifactId>
+		<version>1-SNAPSHOT</version>
+	</parent>
+	<artifactId>geotiff-iosp-thredds</artifactId>
+	<packaging>war</packaging>
+	<name>GeoTIFF IOSP THREDDS Overlay</name>
+	<dependencies>
+		<dependency>
+			<groupId>edu.ucar</groupId>
+			<artifactId>tds</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>geotiff-iosp</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>thredds</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<warSourceExcludes>WEB-INF/web.xml</warSourceExcludes>
+					<packagingExcludes>META-INF/context.xml,</packagingExcludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

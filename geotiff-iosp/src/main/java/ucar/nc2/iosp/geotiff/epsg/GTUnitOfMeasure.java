@@ -16,6 +16,6 @@ public interface GTUnitOfMeasure {
 
     public GTUnitOfMeasure getTargetUnitOfMeasure();
     
-    public Unit<?> getUnit();
+    public Unit/*<?>*/ getUnit();
         
 }

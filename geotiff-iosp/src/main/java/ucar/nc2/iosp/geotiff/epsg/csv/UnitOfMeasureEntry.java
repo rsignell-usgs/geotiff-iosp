@@ -68,7 +68,7 @@ public class UnitOfMeasureEntry implements CSVEntry, GTUnitOfMeasure {
     }
 
     @Override
-    public Unit<?> getUnit() {
+    public Unit/*<?>*/ getUnit() {
         return UnitOfMeasureUtil.convert(this);
     }
 

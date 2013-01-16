@@ -153,6 +153,10 @@ public class GeoTiffIOServiceProvider extends AbstractIOServiceProvider {
     @Override
     public Array readData(Variable variable, Section section) throws IOException, InvalidRangeException {
 
+        if (variable.findAttribute("grid_mapping_name") != null) {
+            return Array.makeArray(variable.getDataType(), 1, 0, 0);
+        }
+        
         int image = -1;
         int band = -1;
 

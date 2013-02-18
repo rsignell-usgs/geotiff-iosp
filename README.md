@@ -17,4 +17,6 @@ GEOTIFF-IOSP is a plugin for the Unidata [THREDDS Data Server](http://www.unidat
  
 ###Usage
 
-  * You can now use GeoTIFF files just as you would NetCDF files -- you can aggregate them or add metadata using NcML, or just add   `<include wildcard="*.tif"/>` to your DatasetScan to pick them up.  Here is an example: http://geoport-dev.whoi.edu/thredds/dodsC/usgs/data1/rsignell/catalog.html?dataset=usgs/data1/rsignell/sample.tif
+  * You can now use GeoTIFF files just as you would NetCDF files -- you can aggregate them or add metadata using NcML, or just add   `<include wildcard="*.tif"/>` to your DatasetScan to pick them up.  
+  
+  * Here is an example: http://geoport-dev.whoi.edu/thredds/dodsC/usgs/data1/rsignell/catalog.html?dataset=usgs/data1/rsignell/sample.tif
